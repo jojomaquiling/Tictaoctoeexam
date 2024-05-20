@@ -8,7 +8,7 @@ import pdb
 # Connect to the ZeroRPC server
 c = zerorpc.Client()
 c.connect("tcp://127.0.0.1:4242")
-c.connect_user()
+the_current_player = c.connect_user()
 
 window = tk.Tk()
 window.title("Tic Tac Toe")
@@ -57,7 +57,7 @@ def handle_click(row, col):
         declare_winner(winner)
     else:
         window.title(f"Tic Tac Toe - Player {current_player}'s turn")
-        if current_player == "X":
+        if current_player == the_current_player:
             enable_buttons()
         else:
             disable_buttons()

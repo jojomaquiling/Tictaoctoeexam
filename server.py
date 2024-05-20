@@ -4,13 +4,14 @@ import itertools
 class TicTacToeServer:
     def __init__(self):
         self.board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
-        self.current_player = "X"
+        self.current_player = 'X' 
         self.connected_users = []
 
     def make_move(self, row, col):
         if self.board[row][col] == 0:
             player = self.current_player
             self.board[row][col] = player
+            self.current_player = 'X' if self.current_player == "0" else "X"
             return True
         else:
             return False
@@ -20,11 +21,12 @@ class TicTacToeServer:
         if winner:
             self.reset_game()
             return self.board, None, winner
-        return self.board, self.current_player, None
+        return self.board,self.current_player, None
 
     def reset_game(self):
         self.board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
         self.current_player = 'X'
+
 
     def check_for_winner(self):
         # Check rows
@@ -52,10 +54,13 @@ class TicTacToeServer:
     def connect_user(self, user_id='X'):
         if (len(self.connected_users) == 0):    
            self.connected_users.append('X')
+           print ('X')
            return 'X'
         elif (len(self.connected_users) == 1):
            self.connected_users.append('O')
+           print ('O')
            return 'O'
+          
         else:
            return None 
 
